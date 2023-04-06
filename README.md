@@ -9,4 +9,4 @@ Rate the laggyness on a scale of 1 to 10.
 Do you want to use custom names?
 
 ## How it's built.
-Mythic Clash uses p5js, posenet and collide2d for all its gameplay. p5.js is used as the base, 
+Mythic Clash uses p5js, posenet and collide2d for all its gameplay. 
