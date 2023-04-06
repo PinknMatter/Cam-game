@@ -11,12 +11,14 @@ let video;
 let poseNet;
 let poses = [2];
 let fighter;
-let fimage
+let fimage;
+let shield;
 
 
 function preload(){
   fighter = loadFont('fonts/RoyalFighter.otf');
   fimage = loadImage('assets/images/fireball.png');
+  shield = loadImage('assets/images/block.png');
 
 }
 
@@ -62,6 +64,7 @@ function modelReady(){
 function draw(){
   background(0);
   image(video, 0, 0);
+  
   // drawKeypoints();
   // drawSkeleton()
  
@@ -193,7 +196,7 @@ class Player{
   
       if(this.canShoot){
       //  print(this.canShoot);
-      this.fireballs.push(new Fireball(this.rightHand.x, this.rightHand.y, this.fireballs.length, this.nose.x, this.rightHand.y, "red"))
+      this.fireballs.push(new Fireball(this.rightHand.x, this.rightHand.y, this.fireballs.length, this.nose.x, this.rightHand.y, "red", this.Rangle))
       this.canShoot = false;
       let self = this;
       setTimeout(function(){ self.canShoot = true;}, 500);
@@ -228,13 +231,14 @@ class Player{
 
       rectMode(CORNER);
       fill('red');
-      rect(this.shield[0].x, this.shield[0].y, 35, 200);
+      image(shield, this.rightHand.x - 60, this.rightHand.y - 30, 150, 150);
+      // rect(this.shield[0].x, this.shield[0].y, 35, 200);
       fill('blue');
 
-      ellipse(this.shield[0].x, this.shield[0].y, 5, 5);
-      ellipse(this.shield[1].x, this.shield[1].y, 5, 5);
-      ellipse(this.shield[2].x, this.shield[2].y, 5, 5);
-      ellipse(this.shield[3].x, this.shield[3].y, 5, 5);
+      // ellipse(this.shield[0].x, this.shield[0].y, 5, 5);
+      // ellipse(this.shield[1].x, this.shield[1].y, 5, 5);
+      // ellipse(this.shield[2].x, this.shield[2].y, 5, 5);
+      // ellipse(this.shield[3].x, this.shield[3].y, 5, 5);
       
       // let shieldhit = collidepointLine()
 
@@ -247,6 +251,8 @@ class Player{
   phealth(){
     if(this.i !== null){
     fill('green');
+    rectMode(CENTER);
+    rect(this.nose.x, this.nose.y - 80, this.health, 10);
     
     // print(this.health);
     }
@@ -258,15 +264,17 @@ class Player{
 }
 
 class Fireball{
-  constructor(x, y, index, posx, posy, color){
+  constructor(x, y, index, posx, posy, color, angle){
     this.posx = posx;
     this.posy = posy;
     this.index = index;
     this.x = x;
     this.y = y;
-    this.speed = 10;
+    this.speedx = (cos(radians(angle))*1);
+    this.speedy = (sin(radians(angle))*1);
     this.size = 60;
     this.color = color;
+    this.angle = angle;
   }
 
   draw(){
@@ -276,19 +284,26 @@ class Fireball{
   }
 
   update(){
+    
+
     if(this.posx > width/2){
-    this.x -= this.speed;
+    this.x += this.speedx*10;
+   
     }
     if(this.posx < width/2){
-      this.x += this.speed;
+      this.x -= this.speedx*10;
+      
   
       }
-    if(this.posy < height/2){
-      this.y -= random(0, 5);
-    }
-    if(this.posy > height/2){
-      this.y += random(0, 5);
-    }
+      if(this.posy > height/2){
+         this.y += this.speedy*10;
+      }
+
+      if(this.posy < height/2){
+        this.y -= this.speedy*10;
+      }
+    
+    
     // this.x += this.speed;
     // this.y += this.speed / 4;
    
