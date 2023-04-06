@@ -1,3 +1,11 @@
 # Mythic Clash
 
-This is a webcam based game similar in style to Mortal Combat or Street Fighter, the game features two players who battle using different spells.
+This is a webcam based game similar in style to Mortal Combat or Street Fighter, the game features two players who battle using fireballs.
+
+Functionality of shields will be added.
+
+## Questions for play testers
+How would you like to see the video?
+What functionality do you feel is missing?
+Rate the laggyness on a scale of 1 to 10.
+Do you want to use custom names?

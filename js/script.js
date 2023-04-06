@@ -70,14 +70,15 @@ function draw(){
      poses[x].fireball();
      poses[x].phealth();
      poses[x].drawSkeleton();
-     
+     poses[x].pShield();
      
      poses[x].torso();
      if( x === 1){
-      poses[x].drawFire(poses[0].poly, 0);
+      poses[x].drawFire(poses[0].poly, 0, poses[0].shield);
+      
      }
      else if (x === 0){
-      poses[x].drawFire(poses[1].poly, 1);
+      poses[x].drawFire(poses[1].poly, 1, poses[1].shield);
      }
 
   }
@@ -101,6 +102,7 @@ class Player{
      this.canShoot = true;
      this.fireballs = [];
      this.poly = [];
+     this.shield = [];
   }
  
 
@@ -144,11 +146,14 @@ class Player{
   }
   }
 
-  drawFire(poly, playerindex){
+  drawFire(poly, playerindex, shield){
     for(let z = 0; z < this.fireballs.length; z++){
       this.fireballs[z].update();
       this.fireballs[z].draw();
       this.fireballs[z].checkCollision(poly, playerindex);
+      if(this.Rangle < 120){
+      this.fireballs[z].checkShield(shield, playerindex);
+      }
       // this.fireballs[z].Offscreen(this.fireballs);
       
     }
@@ -186,7 +191,7 @@ class Player{
   
       if(this.canShoot){
       //  print(this.canShoot);
-      this.fireballs.push(new Fireball(this.rightHand.x, this.rightHand.y, this.fireballs.length, this.nose.x, this.nose.y, "red"))
+      this.fireballs.push(new Fireball(this.rightHand.x, this.rightHand.y, this.fireballs.length, this.nose.x, this.rightHand.y, "red"))
       this.canShoot = false;
       let self = this;
       setTimeout(function(){ self.canShoot = true;}, 500);
@@ -194,8 +199,11 @@ class Player{
       
       
     }
+
+   
   }
 }
+
 
 
     // if(this.Langle > 150){
@@ -203,10 +211,27 @@ class Player{
     // }
   }
 
+  pShield(){
+    if(this.i !== null){
+     if(this.Rangle < 120){
+      fill('blue');
+      this.shield[0] = this.rightHand.x - 30;
+      this.shield[1] = this.rightHand.y - 70;
+      this.shield[2] = 35;
+      this.shield[3] = 200;
+      rect(this.shield[0], this.shield[1], this.shield[2], this.shield[3]);
+      // let shieldhit = collidepointLine()
+
+    }
+  }
+}
+
+  
+
   phealth(){
     if(this.i !== null){
     fill('green');
-    rect(this.nose.x - 60, this.nose.y - 80, this.health, 20);
+    
     // print(this.health);
     }
   }
@@ -240,7 +265,14 @@ class Fireball{
     }
     if(this.posx < width/2){
       this.x += this.speed;
+  
       }
+    if(this.posy < height/2){
+      this.y -= random(0, 5);
+    }
+    if(this.posy > height/2){
+      this.y += random(0, 5);
+    }
     // this.x += this.speed;
     // this.y += this.speed / 4;
    
@@ -256,16 +288,24 @@ class Fireball{
     let hit = collidePointPoly(this.x, this.y, poly);
 
     if(hit){
-      print("hit");
+      
       if(poses[playerindex].health > 0){
-      poses[playerindex].health -= 0.5;
-      print(poses[playerindex].health);
+      poses[playerindex].health -= 1;
+      // print(poses[playerindex].health);
       }
     }
     if(poses[playerindex].health <= 0){
+      textSize(70);
       text('KO!', width/2, height/2);
     }
     
+  }
+
+  checkShield(shield, playerindex){
+    let shieldhit = collidePointLine(this.x, this.y, shield[0], shield[1], shield[2], shield[3]);
+    if(shieldhit){
+      print('hit')
+    }
   }
 
 
