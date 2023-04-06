@@ -146,13 +146,15 @@ class Player{
   }
   }
 
+
   drawFire(poly, playerindex, shield){
     for(let z = 0; z < this.fireballs.length; z++){
+      // console.log(shield);
       this.fireballs[z].update();
       this.fireballs[z].draw();
       this.fireballs[z].checkCollision(poly, playerindex);
-      if(this.Rangle < 120){
-      this.fireballs[z].checkShield(shield, playerindex);
+      if(this.Rangle > 150){
+      this.fireballs[z].checkShield(shield, playerindex, this.fireballs);
       }
       // this.fireballs[z].Offscreen(this.fireballs);
       
@@ -214,12 +216,26 @@ class Player{
   pShield(){
     if(this.i !== null){
      if(this.Rangle < 120){
+
+
+      
+      this.shield[0] = createVector(this.rightHand.x - 30,this.rightHand.y - 70);
+      this.shield[1] = createVector((this.rightHand.x - 30)+35,this.rightHand.y - 70);
+      this.shield[2] = createVector(this.rightHand.x - 30,(this.rightHand.y - 70)+200)
+      this.shield[3] = createVector((this.rightHand.x - 30)+35,(this.rightHand.y - 70)+200);
+
+
+
+      rectMode(CORNER);
+      fill('red');
+      rect(this.shield[0].x, this.shield[0].y, 35, 200);
       fill('blue');
-      this.shield[0] = this.rightHand.x - 30;
-      this.shield[1] = this.rightHand.y - 70;
-      this.shield[2] = 35;
-      this.shield[3] = 200;
-      rect(this.shield[0], this.shield[1], this.shield[2], this.shield[3]);
+
+      ellipse(this.shield[0].x, this.shield[0].y, 5, 5);
+      ellipse(this.shield[1].x, this.shield[1].y, 5, 5);
+      ellipse(this.shield[2].x, this.shield[2].y, 5, 5);
+      ellipse(this.shield[3].x, this.shield[3].y, 5, 5);
+      
       // let shieldhit = collidepointLine()
 
     }
@@ -301,11 +317,18 @@ class Fireball{
     
   }
 
-  checkShield(shield, playerindex){
-    let shieldhit = collidePointLine(this.x, this.y, shield[0], shield[1], shield[2], shield[3]);
+  checkShield(shield, playerindex, fireballs){
+   // console.log("here");
+   
+   if(shield.length!=0){
+   let shieldhit = collidePointPoly(this.x, this.y, shield);
+   //console.log(p5.Vector.dist( shield[0], createVector(this.x,this.y)));
+    
     if(shieldhit){
-      print('hit')
+      print('shield hit')
+      fireballs.splice(this.index, 1);
     }
+  }
   }
 
 
