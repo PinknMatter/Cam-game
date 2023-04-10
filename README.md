@@ -10,3 +10,6 @@ Do you want to use custom names?
 
 ## How it's built.
 Mythic Clash uses p5js, posenet and collide2d for all its gameplay. 
+
+## How to play
+The game features two players on opposite sides of the screen, Players can extend their arm straight to shoot a fireball then bend their arm to form a shield which can block fireballs. The goal is to get the other players health down to 0.
