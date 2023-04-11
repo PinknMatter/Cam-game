@@ -28,3 +28,4 @@ Rough Design of title and game
 
 Second Prototype
 ![Screenshot 2023-03-23 135138](https://github.com/usrunknwn/Final-263/blob/main/Screenshot%202023-04-11%20at%202.47.28%20PM.png)
+![Screenshot 2023-03-23 135138](https://github.com/usrunknwn/Final-263/blob/main/Screenshot%202023-04-11%20at%202.47.33%20PM.png)
