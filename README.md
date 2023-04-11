@@ -24,3 +24,7 @@ First Prototype
 
 Rough Design of title and game
 <img width="1343" alt="Screenshot 2023-03-26 at 1 17 20 AM" src="https://user-images.githubusercontent.com/94400146/230959941-70c86cef-a7aa-460a-b319-bfa6014aec8b.png">
+
+
+Second Prototype
+
