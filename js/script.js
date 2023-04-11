@@ -1,9 +1,6 @@
 /**
-Title of Project
-Author Name
-
-This is a template. You must fill in the title,
-author, and this description to match your project!
+Mythic Clash
+Noah Kornberg + Damian 
 */
 
 "use strict";
@@ -168,10 +165,11 @@ class Player{
     // print(this.angle)
     if(this.i !==null){
     noStroke();
-    fill("white");
+    fill("black");
     textFont(fighter);
     textSize(25);
-    text("Player" + [this.i], this.nose.x - 60, this.nose.y - 90);
+    textAlign(CENTER);
+    text("Player" + [this.i], this.nose.x, this.nose.y - 75);
     }
   }
 
@@ -196,10 +194,10 @@ class Player{
   
       if(this.canShoot){
       //  print(this.canShoot);
-      this.fireballs.push(new Fireball(this.rightHand.x, this.rightHand.y, this.fireballs.length, this.nose.x, this.rightHand.y, "red", this.Rangle))
+      this.fireballs.push(new Fireball(this.rightHand.x, this.rightHand.y, this.fireballs.length, this.nose.x, this.rightHand.y, "red", this.Rangle, this.rightShoulder))
       this.canShoot = false;
       let self = this;
-      setTimeout(function(){ self.canShoot = true;}, 500);
+      setTimeout(function(){ self.canShoot = true;}, 1000);
       }
       
       
@@ -231,7 +229,7 @@ class Player{
 
       rectMode(CORNER);
       fill('red');
-      image(shield, this.rightHand.x - 60, this.rightHand.y - 30, 150, 150);
+      image(shield, this.rightHand.x - 60, this.rightHand.y - 30, 120, 120);
       // rect(this.shield[0].x, this.shield[0].y, 35, 200);
       fill('blue');
 
@@ -250,9 +248,9 @@ class Player{
 
   phealth(){
     if(this.i !== null){
-    fill('green');
+    fill(245,189,100);
     rectMode(CENTER);
-    rect(this.nose.x, this.nose.y - 80, this.health, 10);
+    rect(this.nose.x, this.nose.y - 65, this.health, 20);
     
     // print(this.health);
     }
@@ -264,7 +262,7 @@ class Player{
 }
 
 class Fireball{
-  constructor(x, y, index, posx, posy, color, angle){
+  constructor(x, y, index, posx, posy, color, angle, shoulder){
     this.posx = posx;
     this.posy = posy;
     this.index = index;
@@ -275,6 +273,7 @@ class Fireball{
     this.size = 60;
     this.color = color;
     this.angle = angle;
+    this.shoulder = shoulder; 
   }
 
   draw(){
@@ -286,12 +285,12 @@ class Fireball{
   update(){
     
 
-    if(this.posx > width/2){
-    this.x += this.speedx*10;
+    if(this.posx > this.shoulder.y){
+    this.x += this.speedx*8;
    
     }
-    if(this.posx < width/2){
-      this.x -= this.speedx*10;
+    if(this.posx < this.shoulder.y){
+      this.x -= this.speedx*8;
       
   
       }
