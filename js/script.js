@@ -11,7 +11,7 @@ let poses = [2];
 let fighter;
 let fimage;
 let shield;
-let state = "game";
+let state = "start";
 let logo;
 let startscreen;
 let sbutton;
@@ -22,6 +22,7 @@ let shieldsound;
 let fireballsound;
 let KO;
 let gif;
+let end = 1;
 
 //preload all images and sounds
 function preload(){
@@ -124,6 +125,7 @@ function draw(){
   if(state === "game"){
   background(0);
   image(video, 0, 0);
+
   
   // drawKeypoints();
   // drawSkeleton()
@@ -132,7 +134,7 @@ function draw(){
      poses[x].draw();
      poses[x].fireball();
      poses[x].phealth();
-     poses[x].drawSkeleton();
+    //  poses[x].drawSkeleton();
      poses[x].pShield();
      
      poses[x].torso();
@@ -325,7 +327,7 @@ class Player{
     textFont(arcadefont);
     textSize(25);
     textAlign(CENTER);
-    text("Player" + [this.i], this.nose.x, this.nose.y - 75);
+    text("Player" + [this.i], this.nose.x, this.nose.y - 85);
     }
   }
 
@@ -497,10 +499,13 @@ class Fireball{
       }
     }
     //if the players health hits 0, the game is over 
-    if(poses[playerindex].health < 0){
+    if(poses[playerindex].health <= 0){
       textSize(70);
+      if(end === 1){
       KO.play();
-      image(gif, width/2, height/2);
+      end++;
+      }
+      image(gif, width/2 - 128, height/2 - 60);
     }
     
   }
