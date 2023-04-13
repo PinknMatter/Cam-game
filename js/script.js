@@ -31,7 +31,7 @@ function preload(){
   sbutton = loadImage('assets/images/sbutton.png');
   instructions = loadImage('assets/images/instructions.png');
   fighter = loadFont('fonts/RoyalFighter.otf');
-  fimage = loadImage('assets/images/fireball.png');
+  fimage = loadImage('assets/images/fball.png');
   shield = loadImage('assets/images/block.png');
   arcadefont = loadFont('fonts/ARCADECLASSIC.TTF');
   shieldsound = loadSound("assets/sounds/shieldsound.mp3");
