@@ -41,6 +41,8 @@ For future updates I would like to add different colors for each player as well 
 FINAL WORK
 We used a room on the fourth floor to display our game. We had a projector against the wall you faced so you could see your moves. Then behind the player was a white background for easy pose reading. 
 ![Screenshot 2023-03-23 135138](https://github.com/PinknMatter/Cam-game/blob/main/assets/images/20230413_163726.jpg)
+white background that the camera captured^
 ![Screenshot 2023-03-23 135138](https://github.com/PinknMatter/Cam-game/blob/main/assets/images/20230413_163731.jpg)
+projected wall to see moves ^
 
 
