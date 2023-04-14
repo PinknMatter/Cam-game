@@ -1,3 +1,4 @@
+//Defining variables 
 let arcadefont;
 let logo;
 let startscreen;
@@ -22,8 +23,9 @@ function setup(){
 }
 
 function draw(){
-  
+  //Defining click variable
   if (!clicked) {
+   //Everything below is the first scrren starting menu 
   image(startscreen, 0, -70, 640, 640);
   image(logo, 0, 90);
   image(sbutton, 90, 330);
@@ -49,12 +51,13 @@ function draw(){
 }
 
 function mouseClicked() {
+  //If the button is clicked then go to the instructions screen
   if (mouseX > 110 && mouseX < 215 && mouseY > 348 && mouseY < 370) {
     clicked = true;
     clear();
     image(instructions, 0, -70, 640, 640);
   
-  
+  //Instructions text/font
   fill(22,16,58);
   textFont(arcadefont);
   textSize(40);
@@ -109,7 +112,7 @@ function mouseClicked() {
   textSize(40);
   text("next", 320, 425);
 
-
+//If the next button is clicked then load the menu.html (which is where the main game is stored)
   } else if (mouseX > 270 && mouseX < 425 && mouseY > 415 && mouseY < 440) {
   // next button is clicked
   window.location.href = "menu.html";
