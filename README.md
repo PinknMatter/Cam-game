@@ -32,13 +32,6 @@ With a redesign to fit the indie retro play design style, an instructions screen
 ![Screenshot 2023-03-23 135138](https://github.com/usrunknwn/Final-263/blob/main/Screenshot%202023-04-11%20at%202.47.33%20PM.png)
 
 
-## Game Play
-![2023-04-13 21-28-01058](https://user-images.githubusercontent.com/94400146/231921022-02e7e5d0-dc10-4775-a3bb-bbb785d6d51c.png)
-
-![2023-04-13 21-28-01168](https://user-images.githubusercontent.com/94400146/231921092-8ad77239-cef2-4deb-822b-c62b663ea803.png)
-
-![2023-04-13 21-28-01279](https://user-images.githubusercontent.com/94400146/231921192-d57921d5-25a2-47e4-8bbb-07b5173fd8ef.png)
-
 ## Known Issues and the Future
 Posenet is not fast and perfect, with two players on screen it can get pretty glitchy.  
 For future updates I would like to add different colors for each player as well as a leaderboard.
@@ -51,5 +44,9 @@ We used a room on the fourth floor to display our game. We had a projector again
 white background that the camera captured^
 ![Screenshot 2023-03-23 135138](https://github.com/PinknMatter/Cam-game/blob/main/assets/images/20230413_163731.jpg)
 projected wall to see moves ^
+![2023-04-13 21-28-01058](https://user-images.githubusercontent.com/94400146/231921022-02e7e5d0-dc10-4775-a3bb-bbb785d6d51c.png)
 
+![2023-04-13 21-28-01168](https://user-images.githubusercontent.com/94400146/231921092-8ad77239-cef2-4deb-822b-c62b663ea803.png)
+
+![2023-04-13 21-28-01279](https://user-images.githubusercontent.com/94400146/231921192-d57921d5-25a2-47e4-8bbb-07b5173fd8ef.png)
 
